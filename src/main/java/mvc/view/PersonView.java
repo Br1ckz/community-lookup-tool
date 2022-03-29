@@ -87,6 +87,7 @@ public class PersonView extends javax.swing.JFrame {
                 btnBack = new javax.swing.JButton();
                 btnNext = new javax.swing.JButton();
                 btnSave = new javax.swing.JButton();
+                btnPrev = new javax.swing.JButton();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,12 +126,19 @@ public class PersonView extends javax.swing.JFrame {
 
                 btnSave.setText("Save");
 
+                btnPrev.setText("Previous");
+                btnPrev.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnPrevActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(38, 38, 38)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -138,7 +146,8 @@ public class PersonView extends javax.swing.JFrame {
                                                         .addComponent(labelLastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(labelCampus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addContainerGap()
+                                                .addComponent(btnPrev)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(btnNext)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -175,7 +184,8 @@ public class PersonView extends javax.swing.JFrame {
                                         .addComponent(btnCreate)
                                         .addComponent(btnBack)
                                         .addComponent(btnNext)
-                                        .addComponent(btnSave))
+                                        .addComponent(btnSave)
+                                        .addComponent(btnPrev))
                                 .addContainerGap())
                 );
 
@@ -215,10 +225,17 @@ public class PersonView extends javax.swing.JFrame {
 		parsePerson();
         }//GEN-LAST:event_btnNextActionPerformed
 
+        private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+                resultTableCntl.setCurentPerson(-1);
+		setCurrentPerson();
+		parsePerson();
+        }//GEN-LAST:event_btnPrevActionPerformed
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnBack;
         private javax.swing.JButton btnCreate;
         private javax.swing.JButton btnNext;
+        private javax.swing.JButton btnPrev;
         private javax.swing.JButton btnSave;
         private javax.swing.JTextField fieldCampus;
         private javax.swing.JTextField fieldFirstName;

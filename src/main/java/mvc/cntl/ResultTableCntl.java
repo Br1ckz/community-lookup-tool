@@ -62,10 +62,13 @@ public class ResultTableCntl {
     }
 	
     public void setCurentPerson(int num) {
-	if (currentPerson + num <= personList.size() - 1) {    
+	if (currentPerson + num <= personList.size() - 1 
+		&& currentPerson + num >= 0) {    
 		currentPerson += num;
-	} else {
+	} else if (currentPerson + num > personList.size() - 1){
 		currentPerson = 0;
+	} else if (currentPerson + num < 0) {
+		currentPerson = personList.size() - 1;
 	}
     }
     
