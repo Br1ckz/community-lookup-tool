@@ -75,4 +75,9 @@ public class ResultTableCntl {
     public Person getCurrentPerson() {
 	return personList.get(currentPerson);
     }
+    
+    public void updatePerson(String inFirstName, String inLastName, String inCampus) {
+	    Person person = new Person(inFirstName, inLastName, inCampus);
+	    personList.add(currentPerson, person);
+    }
 }

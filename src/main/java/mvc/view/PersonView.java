@@ -67,6 +67,18 @@ public class PersonView extends javax.swing.JFrame {
     public void setCurrentPerson() {
 	currentPerson = resultTableCntl.getCurrentPerson();
     }
+    
+    public String getFirstName() {
+	    return fieldFirstName.getText();
+    }
+    
+    public String getLastName() {
+	    return fieldLastName.getText();
+    }
+	    
+    public String getCampus() {
+	    return fieldCampus.getText();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,6 +137,11 @@ public class PersonView extends javax.swing.JFrame {
                 });
 
                 btnSave.setText("Save");
+                btnSave.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnSaveActionPerformed(evt);
+                        }
+                });
 
                 btnPrev.setText("Previous");
                 btnPrev.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +247,10 @@ public class PersonView extends javax.swing.JFrame {
 		setCurrentPerson();
 		parsePerson();
         }//GEN-LAST:event_btnPrevActionPerformed
+
+        private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+                resultTableCntl.updatePerson(getFirstName(), getLastName(), getCampus());
+        }//GEN-LAST:event_btnSaveActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnBack;
