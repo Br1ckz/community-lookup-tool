@@ -28,7 +28,6 @@ public class ResultTableCntl {
         this.personList = personList;
         resultTable = new ResultTable(personList.getListOfPeople());
         resultTableUI = new ResultTableView(this);
-//        showResultTableUI();
 	resultTableUI.setVisible(true);
     }
             
@@ -41,14 +40,6 @@ public class ResultTableCntl {
         personCntl = new PersonCntl(this,-1);
     }
     
-//    public void showPersonUI(int selectedRow){
-//	if (personUI == null) {
-//		personUI = new PersonView(this, selectedRow);
-//	}
-//	resultTableUI.setVisible(false);
-//        personUI.setVisible(true);
-//    }   
-    
     public void showNewPersonUI(int selectedRow) {
 	    resultTableUI.dispose();
 	    personCntl = new PersonCntl(this, selectedRow);
@@ -57,44 +48,7 @@ public class ResultTableCntl {
     public PersonList getPersonList() {
         return personList;
     }
-    
-//    public Person getPerson(int personNum) {
-//        return personList.getListOfPeople().get(personNum);
-//    }
-    
-//    public void showResultTableUI() {
-//        if (personUI != null) {
-//            personUI.setVisible(false);
-//            personUI.dispose();
-//        }
-//        resultTableUI.setVisible(true);
-//    }
-//	
-//    public void setCurentPerson(int num) {
-//	if (currentPerson + num <= personList.getListOfPeople().size() - 1 
-//		&& currentPerson + num >= 0) {    
-//		currentPerson += num;
-//	} else if (currentPerson + num > personList.getListOfPeople().size() - 1){
-//		currentPerson = 0;
-//	} else if (currentPerson + num < 0) {
-//		currentPerson = personList.getListOfPeople().size() - 1;
-//	}
-//    }
-    
-//    public Person getCurrentPerson() {
-//	return personList.getListOfPeople().get(currentPerson);
-//    }
-//    
-//    public void updatePerson(String inFirstName, String inLastName, String inCampus) {
-//	    Person person = new Person(inFirstName, inLastName, inCampus);
-//	    personList.getListOfPeople().add(currentPerson, person);
-//    }
-//    
-//    public void addPerson(String firstName, String lastName, String campus) {
-//	    Person person = new Person(firstName, lastName, campus);
-//	    personList.getListOfPeople().add(person);
-//    }
-    
+  
     public ResultTableView getResultTableUI() {
         return resultTableUI;
     }
