@@ -6,6 +6,7 @@
 package mvc.view;
 
 import communitylookuptool.Person;
+import java.util.Set;
 import mvc.cntl.PersonCntl;
 import mvc.cntl.ResultTableCntl;
 
@@ -59,7 +60,10 @@ public class PersonView extends javax.swing.JFrame {
         labelLastName.setVisible(true);
         labelCampus.setVisible(true);
         btnBack.setVisible(true);
-        btnCreate.setVisible(true);
+        btnCreate.setVisible(false);
+	btnSave.setVisible(true);
+	btnPrev.setVisible(false);
+	btnNext.setVisible(false);    
     }
     
     public int getCurrentPerson() {
@@ -252,7 +256,14 @@ public class PersonView extends javax.swing.JFrame {
         }//GEN-LAST:event_btnPrevActionPerformed
 
         private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-                personCntl.updatePerson(getFirstName(), getLastName(), getCampus());
+                if (currentPerson != null) {
+			personCntl.updatePerson(getFirstName(), getLastName(), getCampus());
+		} else {
+			personCntl.addPerson(getFirstName(), getLastName(), getCampus());
+			dispose();
+			personCntl.getResultTableCntl().getResultTable().fireTableDataChanged();
+			personCntl.getResultTableCntl().getResultTableUI().setVisible(true);
+		}
         }//GEN-LAST:event_btnSaveActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
