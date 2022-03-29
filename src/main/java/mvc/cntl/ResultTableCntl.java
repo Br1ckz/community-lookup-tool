@@ -7,6 +7,7 @@ package mvc.cntl;
 
 import communitylookuptool.Person;
 import communitylookuptool.ResultTable;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import mvc.view.PersonView;
 import mvc.view.ResultTableView;
@@ -18,9 +19,9 @@ import mvc.view.ResultTableView;
 public class ResultTableCntl {
     private ArrayList<Person> personList;
     private ResultTable resultTable;
-    private ResultTableView resultTableUI; // refactor to resultTableUI
-    private PersonView personUI; // refactor to personUI
-
+    private ResultTableView resultTableUI; 
+    private PersonView personUI; 
+    private int currentPerson;
     public ResultTableCntl(ArrayList<Person> personList) {
         this.personList = personList;
         resultTable = new ResultTable(personList);
@@ -58,5 +59,17 @@ public class ResultTableCntl {
             personUI.dispose();
         }
         resultTableUI.setVisible(true);
+    }
+	
+    public void setCurentPerson(int num) {
+	if (currentPerson + num <= personList.size() - 1) {    
+		currentPerson += num;
+	} else {
+		currentPerson = 0;
+	}
+    }
+    
+    public Person getCurrentPerson() {
+	return personList.get(currentPerson);
     }
 }
