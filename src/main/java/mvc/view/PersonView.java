@@ -6,6 +6,7 @@
 package mvc.view;
 
 import communitylookuptool.Person;
+import mvc.cntl.PersonCntl;
 import mvc.cntl.ResultTableCntl;
 
 /**
@@ -13,24 +14,25 @@ import mvc.cntl.ResultTableCntl;
  * @author bzc5373
  */
 public class PersonView extends javax.swing.JFrame {
-    private ResultTableCntl resultTableCntl;
+//    private ResultTableCntl resultTableCntl;
     private int selectedRow;
     private Person currentPerson;
+    private PersonCntl personCntl;
     /**
      * Creates new form PersonView
      */
-    public PersonView(ResultTableCntl resultTableCntl, int selectedRow) {
-        this.resultTableCntl = resultTableCntl;
+    public PersonView(PersonCntl personCntl) {
+	this.personCntl = personCntl;
+	initComponents();
+    }
+    public PersonView(PersonCntl personCntl, int selectedRow) {
+        this.personCntl = personCntl;
         this.selectedRow = selectedRow;
-        currentPerson = resultTableCntl.getPerson(selectedRow);
+        currentPerson = personCntl.getPerson(selectedRow);
         initComponents();
         parsePerson();
     }
     
-    public PersonView(ResultTableCntl resultTableCntl) {
-        this.resultTableCntl = resultTableCntl;
-        initComponents();
-    }
         //populate the UI fields with data from the current instrument
     public void parsePerson() {
         if (!(currentPerson.getFirstName().equals(""))){
@@ -52,8 +54,8 @@ public class PersonView extends javax.swing.JFrame {
         }
     }
     
-    public void showNewPersonView() {
-//        labelFirtName.setVisible(true);
+    public void showNewPersonUI() {
+        labelFirstName.setVisible(true);
         labelLastName.setVisible(true);
         labelCampus.setVisible(true);
         btnBack.setVisible(true);
@@ -65,7 +67,7 @@ public class PersonView extends javax.swing.JFrame {
     }
     
     public void setCurrentPerson() {
-	currentPerson = resultTableCntl.getCurrentPerson();
+	currentPerson = personCntl.getCurrentPerson();
     }
     
     public String getFirstName() {
@@ -227,29 +229,30 @@ public class PersonView extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        resultTableCntl.showResultTableUI();
+//        personCntl.showResultTableUI();
+	dispose();
+        personCntl.getResultTableCntl().getResultTable().fireTableDataChanged();
+        personCntl.getResultTableCntl().getResultTableUI().setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        fieldFirstName.setText("");
-        fieldLastName.setText("");
-        fieldCampus.setText("");
+	    showNewPersonUI();
     }//GEN-LAST:event_btnCreateActionPerformed
 
         private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-                resultTableCntl.setCurentPerson(1);
+                personCntl.setCurentPerson(1);
 		setCurrentPerson();
 		parsePerson();
         }//GEN-LAST:event_btnNextActionPerformed
 
         private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-                resultTableCntl.setCurentPerson(-1);
+                personCntl.setCurentPerson(-1);
 		setCurrentPerson();
 		parsePerson();
         }//GEN-LAST:event_btnPrevActionPerformed
 
         private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-                resultTableCntl.updatePerson(getFirstName(), getLastName(), getCampus());
+                personCntl.updatePerson(getFirstName(), getLastName(), getCampus());
         }//GEN-LAST:event_btnSaveActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

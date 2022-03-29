@@ -22,6 +22,6 @@ public class CommunityLookupTool {
     
     public static void ResultTable() {
         PersonList personList = new PersonList();
-        ResultTableCntl resultTableCntl = new ResultTableCntl(personList.getListOfPeople());
+        ResultTableCntl resultTableCntl = new ResultTableCntl(personList);
     }
 }

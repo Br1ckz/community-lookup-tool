@@ -6,12 +6,12 @@
 package mvc.view;
 
 import communitylookuptool.Person;
+import communitylookuptool.PersonList;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,7 +31,7 @@ public class ResultTableView extends javax.swing.JFrame {
     private JButton btnNew;
     private JScrollPane tableScroller; 
     private ResultTableCntl resultTableCntl;
-    private ArrayList<Person> personList;
+    private PersonList personList;
     private Person person;
     
     public ResultTableView(ResultTableCntl resultTableCntl) {
@@ -72,7 +72,7 @@ public class ResultTableView extends javax.swing.JFrame {
             int selectedModelRow = personTable.convertRowIndexToModel(selectedTableRow);
             if(selectedModelRow < 0) //if the user does not highlight a row, this will be -1
                selectedModelRow = 0; //set the model row to the first element in the list
-            ResultTableView.this.resultTableCntl.showPersonUI(selectedModelRow);
+            ResultTableView.this.resultTableCntl.showNewPersonUI(selectedModelRow);
         }
     }
     
@@ -86,7 +86,7 @@ public class ResultTableView extends javax.swing.JFrame {
     public class NewButtonListener implements ActionListener {
         @Override 
         public void actionPerformed(ActionEvent evt) {
-            resultTableCntl.showPersonUI();
+            resultTableCntl.showNewPersonUI();
         }
     }
 }
