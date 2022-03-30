@@ -66,6 +66,7 @@ public class PersonView extends javax.swing.JFrame {
 	btnSave.setVisible(true);
 	btnPrev.setVisible(false);
 	btnNext.setVisible(false);    
+	btnDelete.setVisible(false);
     }
     
     public int getCurrentPerson() {
