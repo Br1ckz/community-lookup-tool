@@ -15,7 +15,6 @@ import mvc.cntl.ResultTableCntl;
  * @author bzc5373
  */
 public class PersonView extends javax.swing.JFrame {
-//    private ResultTableCntl resultTableCntl;
     private int selectedRow;
     private Person currentPerson;
     private PersonCntl personCntl;
@@ -56,7 +55,10 @@ public class PersonView extends javax.swing.JFrame {
     }
     
     public void showNewPersonUI() {
-        labelFirstName.setVisible(true);
+        fieldFirstName.setText("");
+        fieldLastName.setText("");
+        fieldCampus.setText("");
+	labelFirstName.setVisible(true);
         labelLastName.setVisible(true);
         labelCampus.setVisible(true);
         btnBack.setVisible(true);
@@ -84,6 +86,22 @@ public class PersonView extends javax.swing.JFrame {
 	    
     public String getCampus() {
 	    return fieldCampus.getText();
+    }
+    
+   public void showPersonUI(){
+        fieldFirstName.setText("");
+        fieldLastName.setText("");
+        fieldCampus.setText("");
+	if (!(btnPrev.isVisible()))
+		btnPrev.setVisible(true);
+        if (!(btnNext.isVisible()))
+		btnNext.setVisible(true);
+        if (!(btnCreate.isVisible()))
+		btnCreate.setVisible(true);
+        if (!(btnSave.isVisible()))
+		btnSave.setVisible(true);
+	if (!(btnBack.isVisible()))
+		btnBack.setVisible(true);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -115,12 +133,6 @@ public class PersonView extends javax.swing.JFrame {
                                 btnCreateActionPerformed(evt);
                         }
                 });
-
-                fieldFirstName.setText("first name");
-
-                fieldLastName.setText("last name");
-
-                fieldCampus.setText("campus");
 
                 labelFirstName.setText("First Name:");
 
@@ -161,29 +173,33 @@ public class PersonView extends javax.swing.JFrame {
                 jPanel1Layout.setHorizontalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(38, 38, 38)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                         .addComponent(labelFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(labelLastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(labelCampus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(btnPrev)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnNext)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnCreate)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(fieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(fieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(fieldCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSave)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBack)
-                                .addContainerGap())
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(fieldFirstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(fieldLastName)
+                                                        .addComponent(fieldCampus))
+                                                .addGap(343, 343, 343))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnCreate)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnSave)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(btnBack)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 );
                 jPanel1Layout.setVerticalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,8 +234,7 @@ public class PersonView extends javax.swing.JFrame {
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, Short.MAX_VALUE))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,6 +255,7 @@ public class PersonView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+	    currentPerson = null;
 	    showNewPersonUI();
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -260,9 +276,12 @@ public class PersonView extends javax.swing.JFrame {
 			personCntl.updatePerson(getFirstName(), getLastName(), getCampus());
 		} else {
 			personCntl.addPerson(getFirstName(), getLastName(), getCampus());
-			dispose();
-			personCntl.getResultTableCntl().getResultTable().fireTableDataChanged();
-			personCntl.getResultTableCntl().getResultTableUI().setVisible(true);
+//			dispose();
+//			personCntl.getResultTableCntl().getResultTable().fireTableDataChanged();
+//			personCntl.getResultTableCntl().getResultTableUI().setVisible(true);
+			showPersonUI();
+			currentPerson = personCntl.getPersonList().getListOfPeople().get(personCntl.getPersonList().getListOfPeople().size() - 1);
+			parsePerson();
 		}
         }//GEN-LAST:event_btnSaveActionPerformed
 
