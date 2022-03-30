@@ -103,4 +103,8 @@ public class PersonCntl {
 		Person person = new Person(firstName, lastName, campus);
 		personList.getListOfPeople().add(person);
 	}
+	
+	public void deletePerson(Person person) {
+		personList.removePerson(person);
+	}
 }
