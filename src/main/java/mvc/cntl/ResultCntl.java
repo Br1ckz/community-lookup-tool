@@ -22,12 +22,12 @@ public class ResultCntl implements ActionListener {
     private PersonList personList;
     private int currentPerson;
     
-    public ResultCntl(NavigationCntl navCntl) {
+    public ResultCntl(NavigationCntl navCntl, PersonList personList) {
         this.navCntl = navCntl;
-        personList = new PersonList();
+        this.personList = personList; 
         resultView = new ResultView(this);
-        navCntl.showUI(false);
-        showUI(true);
+        navCntl.showNavUI(false);
+        showResultUI(true);
         addALButtons();
     }
 
@@ -91,11 +91,15 @@ public class ResultCntl implements ActionListener {
         resultView.parsePerson(personList.getListOfPeople().get(currentPerson));
     }
 
-    public void showUI(Boolean bool) {
+    public void showResultUI(Boolean bool) {
         resultView.setVisible(bool);
+	if (bool == false) {
+		resultView.dispose();
+	}
     }
 
-    public void giveControl() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void moveToNav() {
+	    navCntl.showNavUI(true);
+	    showResultUI(false);
     }
 }

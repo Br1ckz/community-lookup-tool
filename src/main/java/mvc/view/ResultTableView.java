@@ -33,6 +33,7 @@ public class ResultTableView extends javax.swing.JFrame {
     private ResultTableCntl resultTableCntl;
     private PersonList personList;
     private Person person;
+    private JButton btnBack;
     
     public ResultTableView(ResultTableCntl resultTableCntl) {
         this.resultTableCntl = resultTableCntl;
@@ -50,7 +51,10 @@ public class ResultTableView extends javax.swing.JFrame {
         btnShowDetails.addActionListener(new DetailsButtonListener());
         btnNew = new JButton("New");
         btnNew.addActionListener(new NewButtonListener());
-        buttonPanel.add(btnNew);
+	btnBack = new JButton("Back");
+	btnBack.addActionListener(new BackButtonListener());
+        buttonPanel.add(btnBack);
+	buttonPanel.add(btnNew);
         buttonPanel.add(btnShowDetails);
         buttonPanel.add(btnDone);
         tableScroller = new JScrollPane(personTable);
@@ -87,6 +91,13 @@ public class ResultTableView extends javax.swing.JFrame {
         @Override 
         public void actionPerformed(ActionEvent evt) {
             resultTableCntl.showNewPersonUI();
+        }
+    }
+    
+    public class BackButtonListener implements ActionListener {
+        @Override 
+        public void actionPerformed(ActionEvent evt) {
+            resultTableCntl.moveToNav();
         }
     }
 }

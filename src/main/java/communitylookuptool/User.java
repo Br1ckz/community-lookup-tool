@@ -5,19 +5,19 @@
  */
 package communitylookuptool;
 
+import java.io.Serializable;
+
 /**
  *
  * @author bzc5373
  */
-public class User {
+public class User implements Serializable{
     private String firstName;
     private String lastName;
     private String userName;
     private String password;
 
-    public User(String firstName, String lastName, String userName, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
@@ -58,4 +58,5 @@ public class User {
     public String toString() {
         return "User{" + "firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName + ", password=" + password + '}';
     }
+
 }

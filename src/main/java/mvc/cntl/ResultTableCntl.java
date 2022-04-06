@@ -23,8 +23,10 @@ public class ResultTableCntl {
     private PersonView personUI; 
     private int currentPerson;
     private PersonCntl personCntl;
+    private NavigationCntl navCntl;
     
-    public ResultTableCntl(PersonList personList) {
+    public ResultTableCntl(NavigationCntl navCntl, PersonList personList) {
+	this.navCntl = navCntl;
         this.personList = personList;
         resultTable = new ResultTable(personList.getListOfPeople());
         resultTableUI = new ResultTableView(this);
@@ -51,5 +53,11 @@ public class ResultTableCntl {
   
     public ResultTableView getResultTableUI() {
         return resultTableUI;
+    }
+    
+    public void moveToNav() {
+	    navCntl.showNavUI(true);
+	    resultTableUI.setVisible(false);
+	    resultTableUI.dispose();
     }
 }

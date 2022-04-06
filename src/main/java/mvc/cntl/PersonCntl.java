@@ -101,7 +101,8 @@ public class PersonCntl {
 
 	public void addPerson(String firstName, String lastName, String campus) {
 		Person person = new Person(firstName, lastName, campus);
-		personList.getListOfPeople().add(person);
+//		personList.getListOfPeople().add(person);
+		personList.addPerson(person);
 	}
 	
 	public void deletePerson(Person person) {
