@@ -5,7 +5,7 @@
  */
 package mvc.cntl;
 
-import java.awt.event.ActionEvent;
+import communitylookuptool.PersonList;
 import mvc.view.NavigationView;
 
 /**
@@ -14,26 +14,41 @@ import mvc.view.NavigationView;
  */
 public class NavigationCntl{
     private LoginCntl loginCntl;
-    private NavigationView navView;
+    private NavigationView navUI;
     private ResultCntl resultCntl;
+    private PersonList personList;
     
     public NavigationCntl(LoginCntl loginCntl) {
         this.loginCntl = loginCntl;
-        loginCntl.showUI(false);
-        navView = new NavigationView(this);
-        showUI(true);
+        navUI = new NavigationView(this);
+        showNavUI(true);
+	this.loginCntl.showLoginUI(false);
+	personList = new PersonList();
     }
      
-    public void showUI(Boolean bool) {
-        navView.setVisible(bool);
+    public void showNavUI(Boolean bool) {
+        navUI.setVisible(bool);
+	if (bool == false) {
+		navUI.dispose();
+	}
     }
     
-    public NavigationCntl() {
-        navView = new NavigationView(this);
-        navView.setVisible(true);
-    }
+//    public NavigationCntl() {
+//        navView = new NavigationView(this);
+//        navView.setVisible(true);
+//    }
 
-    public void giveControl() {
-        ResultCntl resCntl = new ResultCntl(this);
+    public void moveToResult() {
+        ResultCntl resCntl = new ResultCntl(this, personList);
+    }
+    
+    public void moveToResultTable() {
+	ResultTableCntl resultTableCntl = new ResultTableCntl(this, personList);    
+	showNavUI(false);
+    }
+    
+    public void moveToLogin() {
+	    loginCntl.showLoginUI(true);
+	    showNavUI(false);
     }
 }

@@ -144,7 +144,7 @@ public class LoginUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntLoginActionPerformed
-        User user = new User("","",textFieldUsername.getText(), textFieldPassword.getText());
+        User user = new User(textFieldUsername.getText(), textFieldPassword.getText());
         loginCntl.requestAuthentication(user);
     }//GEN-LAST:event_bntLoginActionPerformed
 

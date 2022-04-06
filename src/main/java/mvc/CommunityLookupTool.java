@@ -15,13 +15,6 @@ import mvc.cntl.ResultTableCntl;
  */
 public class CommunityLookupTool {
     public static void main(String[] args) {
-//        LoginCntl loginCntl = new LoginCntl();
-//            ResultCntl resultCntl = new ResultCntl();
-        ResultTable();    
-    }
-    
-    public static void ResultTable() {
-        PersonList personList = new PersonList();
-        ResultTableCntl resultTableCntl = new ResultTableCntl(personList);
+        LoginCntl loginCntl = new LoginCntl();
     }
 }
