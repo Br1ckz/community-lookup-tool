@@ -65,6 +65,43 @@ public class Person implements Serializable {
     
     @Override
     public String toString() {
-        return "Person{" + "firstName=" + firstName + ", lastName=" + lastName + ", campus=" + campus + '}';
+        return "Person{" + "lastName=" + lastName + ", firstName=" + firstName + ", campus=" + campus + '}';
     }
+    
+    
+    public boolean decideToInsert(Object person) {
+		boolean decision = false;
+		boolean firstDec = false;
+		boolean lastDec = false;
+		
+		Person person1 = (Person)person;
+//		if (this.shippingPriority < order1.shippingPriority) {
+//			decision = true;
+//		}
+		String lowerLast = this.lastName.toLowerCase();
+		String lowerFirst = this.firstName.toLowerCase();
+		char firstName[] = lowerFirst.toCharArray();
+		char lastName[] = lowerLast.toCharArray();
+		int sizeLast = lastName.length;
+		int sizeFirst = lastName.length;
+		for (int i = 0; i < sizeLast; i++) {
+			for (int j = i + 1; j < sizeLast; j++) {
+				if (lastName[j] > lastName[i]){
+					lastDec = true;
+				}
+			}
+		}
+
+		for (int i = 0; i < sizeFirst; i++) {
+			for (int j = i + 1; j < sizeFirst; j++) {
+				if (firstName[j] > firstName[i]){
+					firstDec = true;
+				}
+			}
+		}
+		
+		decision = firstDec & lastDec;
+		
+		return decision;
+	}
 }

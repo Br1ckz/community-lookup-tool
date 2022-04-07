@@ -112,4 +112,8 @@ public class PersonList {
 			System.out.println(currentPerson.getFirstName() + " " + currentPerson.getLastName() + " " + currentPerson.getCampus());
 		}
 	}
+	
+	public void updatePerson(int personNum, Person person) {
+		listOfPeople.set(personNum, person);
+	}
 }
