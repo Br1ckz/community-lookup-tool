@@ -15,17 +15,17 @@ import mvc.cntl.ResultCntl;
  */
 public class ResultView extends javax.swing.JFrame {
     private ResultCntl resultCntl;
-    private ArrayList<Person> listOfPeople;
-    private int currentPerson = 0;
-    private Person person;
-    private int selectedRow;
-    public int getCurrentPerson() {
-        return currentPerson;
-    }
+//    private ArrayList<Person> listOfPeople;
+//    private int currentPerson = 0;
+//    private Person person;
+//    private int selectedRow;
+//    public int getCurrentPerson() {
+//        return currentPerson;
+//    }
 
-    public void setCurrentPerson(int currentPerson) {
-        this.currentPerson = currentPerson;
-    }
+//    public void setCurrentPerson(int currentPerson) {
+//        this.currentPerson = currentPerson;
+//    }
     
     /**
      * Creates new form ResultView
@@ -83,6 +83,11 @@ public class ResultView extends javax.swing.JFrame {
                 labelTitle.setText("Results");
 
                 btnNext.setText("Next");
+                btnNext.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnNextActionPerformed(evt);
+                        }
+                });
 
                 btnAdd.setText("Add");
                 btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -92,10 +97,25 @@ public class ResultView extends javax.swing.JFrame {
                 });
 
                 btnUpdate.setText("Update");
+                btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnUpdateActionPerformed(evt);
+                        }
+                });
 
                 btnQuit.setText("Quit");
+                btnQuit.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnQuitActionPerformed(evt);
+                        }
+                });
 
                 btnDelete.setText("Delete");
+                btnDelete.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnDeleteActionPerformed(evt);
+                        }
+                });
 
                 btnPrev.setText("Prev");
                 btnPrev.addActionListener(new java.awt.event.ActionListener() {
@@ -106,20 +126,9 @@ public class ResultView extends javax.swing.JFrame {
 
                 labelFirstName.setText("First Name:");
 
-                txtFirstName.setText("first name");
-
                 labelLastName.setText("Last Name:");
 
-                txtLastName.setText("last name");
-                txtLastName.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                txtLastNameActionPerformed(evt);
-                        }
-                });
-
                 labelCampus.setText("Campus");
-
-                txtCampus.setText("campus");
 
                 btnBack.setText("Back");
                 btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -140,25 +149,28 @@ public class ResultView extends javax.swing.JFrame {
                                                                 .addGap(181, 181, 181)
                                                                 .addComponent(labelTitle))
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addGap(34, 34, 34)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(labelFirstName)
-                                                                                .addComponent(labelLastName)
-                                                                                .addComponent(labelCampus))
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(btnBack)
-                                                                                .addGap(17, 17, 17)))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(txtFirstName)
-                                                                        .addComponent(txtLastName)
-                                                                        .addComponent(txtCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGroup(layout.createSequentialGroup()
                                                                 .addGap(148, 148, 148)
                                                                 .addComponent(btnPrev)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(btnDelete)))
+                                                                .addComponent(btnDelete))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(34, 34, 34)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                .addComponent(labelFirstName)
+                                                                                                .addComponent(labelLastName)
+                                                                                                .addComponent(labelCampus))
+                                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                                .addComponent(btnBack)
+                                                                                                .addGap(17, 17, 17)))
+                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                                .addGap(38, 38, 38)
+                                                                                                .addComponent(txtCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                        .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                                 .addGap(11, 11, 11))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addGap(49, 49, 49)
@@ -206,20 +218,66 @@ public class ResultView extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrevActionPerformed
 
-    private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLastNameActionPerformed
+	    if (resultCntl.getCurrentPerson() == 0) {
+		    
+                resultCntl.setCurrentPerson(resultCntl.getListOfPeople().size() -1);
+            } else {
+                resultCntl.setCurrentPerson(resultCntl.getCurrentPerson() - 1);
+            }
+	   parsePerson(resultCntl.getListOfPeople().get(resultCntl.getCurrentPerson()));
+    }//GEN-LAST:event_btnPrevActionPerformed
 
         private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
                 resultCntl.moveToNav();
         }//GEN-LAST:event_btnBackActionPerformed
 
         private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-                // TODO add your handling code here:
+                Person person = new Person( txtFirstName.getText(), txtLastName.getText(), txtCampus.getText());
+//		resultCntl.getListOfPeople().
+		resultCntl.getPersonList().addPerson(person);
+		parsePerson(resultCntl.getListOfPeople().get(resultCntl.getCurrentPerson()));
         }//GEN-LAST:event_btnAddActionPerformed
+
+        private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+            if (resultCntl.getCurrentPerson() ==  resultCntl.getListOfPeople().size() - 1) {
+	    
+//		    listOfPeople.size() - 1) {
+		resultCntl.setCurrentPerson(0);
+//                currentPerson = 0;
+            } else {
+//                currentPerson++;
+		resultCntl.setCurrentPerson(resultCntl.getCurrentPerson() + 1);
+            }
+	    parsePerson(resultCntl.getListOfPeople().get(resultCntl.getCurrentPerson()));
+        }//GEN-LAST:event_btnNextActionPerformed
+
+        private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+//              resultCntl.getListOfPeople().remove(resultCntl.getCurrentPerson());
+		resultCntl.getPersonList().removePerson(resultCntl.getListOfPeople().get(resultCntl.getCurrentPerson()));
+        }//GEN-LAST:event_btnDeleteActionPerformed
+
+        private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+                Person person = resultCntl.getListOfPeople().get(resultCntl.getCurrentPerson());
+		if (!(person.getFirstName().equals(txtFirstName.getText()))) {
+                person.setFirstName(txtFirstName.getText());
+            }            
+            
+            if (!(person.getLastName().equals(txtLastName.getText()))) {
+                person.setLastName(txtLastName.getText());
+            }
+            
+            if (!(person.getCampus().equals(txtCampus.getText()))) {
+                person.setCampus(txtCampus.getText());
+            }
+	    
+//	    resultCntl.getPersonList().updatePerson(resultCntl.getCurrentPerson(), person);
+		resultCntl.getPersonList().updatePerson(resultCntl.getCurrentPerson(), person);
+        }//GEN-LAST:event_btnUpdateActionPerformed
+
+        private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
+                System.exit(0);
+        }//GEN-LAST:event_btnQuitActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         public javax.swing.JButton btnAdd;

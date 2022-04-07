@@ -5,9 +5,9 @@
  */
 package mvc;
 
-import communitylookuptool.PersonList;
 import mvc.cntl.LoginCntl;
-import mvc.cntl.ResultTableCntl;
+import communitylookuptool.Directory;
+import communitylookuptool.UserList;
 
 /**
  *
@@ -15,6 +15,8 @@ import mvc.cntl.ResultTableCntl;
  */
 public class CommunityLookupTool {
     public static void main(String[] args) {
+//	Directory directory = new Directory();
+//	directory.printDirectory();
         LoginCntl loginCntl = new LoginCntl();
     }
 }

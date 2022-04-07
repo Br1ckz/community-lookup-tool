@@ -62,4 +62,7 @@ public class LoginCntl {
 		NavigationCntl navCntl = new NavigationCntl(this);
 	}
 
+	public void addUser(User newUser) {
+		userList.createUser(newUser);
+	}
 }
